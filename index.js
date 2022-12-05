@@ -37,11 +37,14 @@ function squareDigits(num) {
 //that checks whether the two arrays have the "same" elements,
 //with the same multiplicities (the multiplicity of a member is the number of times it appears).
 //"Same" means, here, that the elements in b are the elements in a squared, regardless of the order.
+function createSortedArray(arr) {
+  return [...arr].sort((a, b) => a - b);
+}
 function comp(array1, array2) {
   if (!array1 || !array2) return false;
   if (array1.length !== array2.length) return false;
-  const sortedArr1Copy = [...array1].sort((a, b) => a - b);
-  const sortedArr2Copy = [...array2].sort((a, b) => a - b);
+  const sortedArr1Copy = createSortedArray(array1);
+  const sortedArr2Copy = createSortedArray(array2);
   let answer = true;
   for (let i = 0; i < sortedArr1Copy.length; i += 1) {
     answer = sortedArr2Copy[i] === sortedArr1Copy[i] ** 2;
